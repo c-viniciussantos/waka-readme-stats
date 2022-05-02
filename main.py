@@ -155,7 +155,7 @@ repositoryListQuery = Template("""
 
 
 def millify(n):
-    millnames = ['', ' Thousand', ' Million', ' Billion', ' Trillion']
+    millnames = ['', ' Mil', ' Milhões', ' Bilhões', ' Trilhões']
     n = float(n)
     millidx = max(0, min(len(millnames) - 1,
                          int(math.floor(0
@@ -284,21 +284,23 @@ def generate_commit_list(tz):
          "percent": round((morning / sumAll) * 100, 2)},
         {"name": "🌆 " + translate['Daytime'], "text": str(daytime) + " commits",
          "percent": round((daytime / sumAll) * 100, 2)},
-        {"name": "🌃 " + translate['Evening'], "text": str(evening) + " commits",
+        {"name": " 🌃 " + translate['Evening'], "text": str(evening) + " commits",
          "percent": round((evening / sumAll) * 100, 2)},
         {"name": "🌙 " + translate['Night'], "text": str(night) + " commits",
          "percent": round((night / sumAll) * 100, 2)},
     ]
     dayOfWeek = [
-        {"name": translate['Monday'], "text": str(Monday) + " commits", "percent": round((Monday / sum_week) * 100, 2)},
+        {"name": translate['Monday'], "text": str(Monday) + " commits", 
+        "percent": round((Monday / sum_week) * 100, 2)},
         {"name": translate['Tuesday'], "text": str(Tuesday) + " commits",
          "percent": round((Tuesday / sum_week) * 100, 2)},
-        {"name": translate['Wednesday'], "text": str(Wednesday) + " commits",
+        {"name": " " + translate['Wednesday'], "text": str(Wednesday) + " commits",
          "percent": round((Wednesday / sum_week) * 100, 2)},
         {"name": translate['Thursday'], "text": str(Thursday) + " commits",
          "percent": round((Thursday / sum_week) * 100, 2)},
-        {"name": translate['Friday'], "text": str(Friday) + " commits", "percent": round((Friday / sum_week) * 100, 2)},
-        {"name": translate['Saturday'], "text": str(Saturday) + " commits",
+        {"name": translate['Friday'], "text": str(Friday) + " commits", 
+         "percent": round((Friday / sum_week) * 100, 2)},
+        {"name": " " + translate['Saturday'], "text": str(Saturday) + " commits",
          "percent": round((Saturday / sum_week) * 100, 2)},
         {"name": translate['Sunday'], "text": str(Sunday) + " commits", "percent": round((Sunday / sum_week) * 100, 2)},
     ]
@@ -512,15 +514,16 @@ def get_stats(github):
     if showLanguagePerRepo.lower() in truthy:
         stats = stats + generate_language_per_repo(repositoryList) + '\n\n'
 
-    if showLocChart.lower() in truthy:
-        stats += '**' + translate['Timeline'] + '**\n\n'
-        branch_name = github.get_repo(f'{username}/{username}').default_branch
-        stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
+    #if showLocChart.lower() in truthy:
+    #    stats += '**' + translate['Timeline'] + '**\n\n'
+    #    branch_name = github.get_repo(f'{username}/{username}').default_branch
+    #    stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
 
     if show_updated_date.lower() in truthy:
         now = datetime.datetime.utcnow()
         d1 = now.strftime(updated_date_format)
-        stats = stats + "\n Last Updated on " + d1 + " UTC"
+        d1 = d1.replace(hour= hour - 3)
+        stats = stats + "\n Ultima atualização em " + d1 + " GMT"
 
     return stats
 
