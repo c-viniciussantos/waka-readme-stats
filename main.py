@@ -18,7 +18,6 @@ from urllib.parse import quote
 import json
 import sys
 from datetime import date
-from datetime import timedelta
 import math
 
 from dotenv import load_dotenv
@@ -156,7 +155,7 @@ repositoryListQuery = Template("""
 
 
 def millify(n):
-    millnames = ['', ' Thousand', ' Million', ' Billion', ' Trillion']
+    millnames = ['', ' Mil', ' Milhões', ' Bilhões', ' Trilhões']
     n = float(n)
     millidx = max(0, min(len(millnames) - 1,
                          int(math.floor(0
