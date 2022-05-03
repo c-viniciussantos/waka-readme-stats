@@ -319,17 +319,17 @@ def generate_commit_list(tz):
         
         if str(max_element['name']) == 'Segunda-Feira ':
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Terça-Feira  ':
+        elif str(max_element['name']) == 'Terça-Feira   ':
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Quarta-Feira  ':
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Quinta-Feira  ':
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Sexta-Feira  ':
+        elif str(max_element['name']) == 'Sexta-Feira   ':
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Sábado  ':
+        elif str(max_element['name']) == 'Sábado   ':
             days_title = translate['I am more productive in'] % max_element['name']
-        elif str(max_element['name']) == 'Domingo  ':
+        elif str(max_element['name']) == 'Domingo   ':
             days_title = translate['I am more productive in'] % max_element['name']
         else: 
             days_title = translate['I am Most Productive on'] % max_element['name']
