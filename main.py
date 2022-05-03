@@ -18,6 +18,7 @@ from urllib.parse import quote
 import json
 import sys
 from datetime import date
+from datetime import timedelta
 import math
 
 from dotenv import load_dotenv
@@ -538,9 +539,8 @@ def get_stats(github):
 
     if show_updated_date.lower() in truthy:
         now = datetime.datetime.utcnow()
-        d1 = now.strftime(updated_date_format)
-        d1 = d1.replace(hour= hour - 3)
-        stats = stats + "\n Ultima atualização em " + d1 + " GMT"
+        d1 = now.strftime(updated_date_format) - timedelta(hours=3)
+        stats = stats + "\n Ultima atualização em " + d1 + " GMT-3"
 
     return stats
 
