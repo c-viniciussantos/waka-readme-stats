@@ -316,7 +316,7 @@ def generate_commit_list(tz):
         for day in dayOfWeek:
             if day['percent'] > max_element['percent']:
                 max_element = day
-        print("max_element" + max_element + " max_element['name'] "+ max_element['name'] + " max_element['text'] "+ max_element['text'])
+        print("max_element" + str(max_element) + " max_element['name'] "+ str(max_element['name']) + " max_element['text'] "+ str(max_element['text']))
         days_title = translate['I am Most Productive on'] % max_element['name']
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
