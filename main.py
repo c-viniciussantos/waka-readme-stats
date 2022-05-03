@@ -332,7 +332,7 @@ def generate_commit_list(tz):
             elif max_element['name'] == 'Domingo':
                 days_title = translate['I am more productive in'] % max_element['name']
             else:
-                days_title = translate['I am Most Productive on'] % max_element['name']
+                days_title = translate['I am Most Productive in'] % max_element['name']
             
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
@@ -532,10 +532,10 @@ def get_stats(github):
     if showLanguagePerRepo.lower() in truthy:
         stats = stats + generate_language_per_repo(repositoryList) + '\n\n'
 
-    #if showLocChart.lower() in truthy:
-    #    stats += '**' + translate['Timeline'] + '**\n\n'
-    #    branch_name = github.get_repo(f'{username}/{username}').default_branch
-    #    stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
+    if showLocChart.lower() in truthy:
+        stats += '**' + translate['Timeline'] + '**\n\n'
+        branch_name = github.get_repo(f'{username}/{username}').default_branch
+        stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
 
     if show_updated_date.lower() in truthy:
         now = datetime.datetime.utcnow()
