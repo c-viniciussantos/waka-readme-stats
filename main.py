@@ -290,17 +290,20 @@ def generate_commit_list(tz):
          "percent": round((night / sumAll) * 100, 2)},
     ]
     dayOfWeek = [
-        {"name": translate['Monday'], "text": str(Monday) + " commits", "percent": round((Monday / sum_week) * 100, 2)},
-        {"name": translate['Tuesday'], "text": str(Tuesday) + " commits",
+        {"name": translate['Monday'], "text": str(Monday)+ " " +" + " commits", 
+         "percent": round((Monday / sum_week) * 100, 2)},
+        {"name": translate['Tuesday'], "text": str(Tuesday) + " " + " commits",
          "percent": round((Tuesday / sum_week) * 100, 2)},
-        {"name": translate['Wednesday'], "text": str(Wednesday) + " commits",
+        {"name": translate['Wednesday'], "text": str(Wednesday) + " " + " commits",
          "percent": round((Wednesday / sum_week) * 100, 2)},
-        {"name": translate['Thursday'], "text": str(Thursday) + " commits",
+        {"name": translate['Thursday'], "text": str(Thursday) + " " + " commits",
          "percent": round((Thursday / sum_week) * 100, 2)},
-        {"name": translate['Friday'], "text": str(Friday) + " commits", "percent": round((Friday / sum_week) * 100, 2)},
-        {"name": translate['Saturday'], "text": str(Saturday) + " commits",
+        {"name": translate['Friday'], "text": str(Friday) + " " + " commits", 
+         "percent": round((Friday / sum_week) * 100, 2)},
+        {"name": translate['Saturday'], "text": str(Saturday) + " " + " commits",
          "percent": round((Saturday / sum_week) * 100, 2)},
-        {"name": translate['Sunday'], "text": str(Sunday) + " commits", "percent": round((Sunday / sum_week) * 100, 2)},
+        {"name": translate['Sunday'], "text": str(Sunday) + " " + " commits", 
+         "percent": round((Sunday / sum_week) * 100, 2)},
     ]
 
     string = string + '**' + title + '** \n\n' + '```text\n' + make_commit_list(one_day) + '\n\n```\n'
