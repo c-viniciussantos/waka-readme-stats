@@ -520,8 +520,8 @@ def get_stats(github):
 
     if show_updated_date.lower() in truthy:
         now = datetime.datetime.utcnow()
-        d1 = now.strftime(updated_date_format) - timedelta(hours=3)
-        stats = stats + "\n Última atualização em " + d1 + " GMT-3"
+        d1 = now.strftime(updated_date_format)
+        stats = stats + "\n Última atualização em " + d1 + " UTC"
 
     return stats
 
