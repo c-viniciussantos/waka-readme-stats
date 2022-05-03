@@ -290,26 +290,19 @@ def generate_commit_list(tz):
          "percent": round((night / sumAll) * 100, 2)},
     ]
     dayOfWeek = [
-        {"name": translate['Monday'], 
-         "text": str(Monday)+ ' ' + " commits", 
+        {"name": translate['Monday'], "text": str(Monday) + " commits", 
          "percent": round((Monday / sum_week) * 100, 2)},
-        {"name": translate['Tuesday'], 
-         "text": str(Tuesday)+ ' ' + " commits",
+        {"name": translate['Tuesday'], "text": str(Tuesday) + " commits",
          "percent": round((Tuesday / sum_week) * 100, 2)},
-        {"name": translate['Wednesday'],
-         "text": str(Wednesday)+ ' ' + " commits",
+        {"name": translate['Wednesday'], "text": str(Wednesday) + " commits",
          "percent": round((Wednesday / sum_week) * 100, 2)},
-        {"name": translate['Thursday'],
-         "text": str(Thursday)+ ' ' + " commits",
+        {"name": translate['Thursday'], "text": str(Thursday) + " commits",
          "percent": round((Thursday / sum_week) * 100, 2)},
-        {"name": translate['Friday'],
-         "text": str(Friday)+ ' ' + " commits", 
+        {"name": translate['Friday'], "text": str(Friday) + " commits", 
          "percent": round((Friday / sum_week) * 100, 2)},
-        {"name": translate['Saturday'],
-         "text": str(Saturday)+ ' ' + " commits",
+        {"name": translate['Saturday'], "text": str(Saturday) + " commits",
          "percent": round((Saturday / sum_week) * 100, 2)},
-        {"name": translate['Sunday'], 
-         "text": str(Sunday)+ ' ' + " commits", 
+        {"name": translate['Sunday'], "text": str(Sunday) + " commits", 
          "percent": round((Sunday / sum_week) * 100, 2)},
     ]
 
@@ -323,6 +316,7 @@ def generate_commit_list(tz):
         for day in dayOfWeek:
             if day['percent'] > max_element['percent']:
                 max_element = day
+        print("max_element" + max_element + " max_element['name'] "+ max_element['name'] + " max_element['text'] "+ max_element['text'])
         days_title = translate['I am Most Productive on'] % max_element['name']
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
