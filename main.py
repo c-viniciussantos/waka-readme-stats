@@ -156,7 +156,7 @@ repositoryListQuery = Template("""
 
 
 def millify(n):
-    millnames = ['', ' Mil', ' Milhões', ' Bilhões', ' Trilhões']
+    millnames = ['', ' Thousand', ' Million', ' Billion', ' Trillion']
     n = float(n)
     millidx = max(0, min(len(millnames) - 1,
                          int(math.floor(0
@@ -291,16 +291,14 @@ def generate_commit_list(tz):
          "percent": round((night / sumAll) * 100, 2)},
     ]
     dayOfWeek = [
-        {"name": translate['Monday'], "text": str(Monday) + " commits", 
-        "percent": round((Monday / sum_week) * 100, 2)},
+        {"name": translate['Monday'], "text": str(Monday) + " commits", "percent": round((Monday / sum_week) * 100, 2)},
         {"name": translate['Tuesday'], "text": str(Tuesday) + " commits",
          "percent": round((Tuesday / sum_week) * 100, 2)},
         {"name": translate['Wednesday'], "text": str(Wednesday) + " commits",
          "percent": round((Wednesday / sum_week) * 100, 2)},
         {"name": translate['Thursday'], "text": str(Thursday) + " commits",
          "percent": round((Thursday / sum_week) * 100, 2)},
-        {"name": translate['Friday'], "text": str(Friday) + " commits", 
-         "percent": round((Friday / sum_week) * 100, 2)},
+        {"name": translate['Friday'], "text": str(Friday) + " commits", "percent": round((Friday / sum_week) * 100, 2)},
         {"name": translate['Saturday'], "text": str(Saturday) + " commits",
          "percent": round((Saturday / sum_week) * 100, 2)},
         {"name": translate['Sunday'], "text": str(Sunday) + " commits", "percent": round((Sunday / sum_week) * 100, 2)},
@@ -316,24 +314,7 @@ def generate_commit_list(tz):
         for day in dayOfWeek:
             if day['percent'] > max_element['percent']:
                 max_element = day
-
-            if max_element['name'] == 'Segunda-Feira ':
-                days_title = translate['I am more productive at'] % max_element['name']
-            elif max_element['name'] == 'Terça-Feira':
-                days_title = translate['I am more productive at'] % max_element['name']
-            elif max_element['name'] == 'Quarta-Feira':
-                days_title = translate['I am more productive at'] % max_element['name']
-            elif max_element['name'] == 'Quinta-Feira':
-                days_title = translate['I am more productive at'] % max_element['name']
-            elif max_element['name'] == 'Sexta-Feira':
-                days_title = translate['I am more productive at'] % max_element['name']
-            elif max_element['name'] == 'Sábado':
-                days_title = translate['I am more productive in'] % max_element['name']
-            elif max_element['name'] == 'Domingo':
-                days_title = translate['I am more productive in'] % max_element['name']
-            else:
-                days_title = translate['I am Most Productive in'] % max_element['name']
-            
+        days_title = translate['I am Most Productive on'] % max_element['name']
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
     return string
