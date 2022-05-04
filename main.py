@@ -318,30 +318,24 @@ def generate_commit_list(tz):
             if day['percent'] > max_element['percent']:
                 max_element = day
         
-        if str(max_element['name']) == 'Segunda-Feira ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        if str(max_element['name']) == 'Segunda-Feira ':        
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Terça-Feira   ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Terça-Feira   ':          
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Quarta-Feira  ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Quarta-Feira  ':         
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Quinta-Feira  ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Quinta-Feira  ':           
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Sexta-Feira   ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Sexta-Feira   ':           
             days_title = translate['I am more productive at'] % max_element['name']
-        elif str(max_element['name']) == 'Sábado        ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Sábado        ':        
             days_title = translate['I am more productive in'] % max_element['name']
-        elif str(max_element['name']) == 'Domingo       ':
-            max_element['name'] = str.rstrip(max_element['name']) + "**"
+        elif str(max_element['name']) == 'Domingo       ':    
             days_title = translate['I am more productive in'] % max_element['name']
         else: 
             days_title = translate['I am Most Productive on'] % max_element['name']
 
+        days_title = days_title.rstrip() + "**"
         string = string + '📅 **' + days_title + ' \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
     return string
