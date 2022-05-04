@@ -318,22 +318,28 @@ def generate_commit_list(tz):
                 max_element = day
         
         if str(max_element['name']) == 'Segunda-Feira ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Terça-Feira   ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Quarta-Feira  ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Quinta-Feira  ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Sexta-Feira   ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive at'] % max_element['name']
         elif str(max_element['name']) == 'Sábado        ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive in'] % max_element['name']
         elif str(max_element['name']) == 'Domingo       ':
+            str.rstrip(max_element['name'])
             days_title = translate['I am more productive in'] % max_element['name']
         else: 
             days_title = translate['I am Most Productive on'] % max_element['name']
-
 
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
