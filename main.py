@@ -341,7 +341,8 @@ def generate_commit_list(tz):
             days_title = translate['I am more productive in'] % max_element['name']
         else: 
             days_title = translate['I am Most Productive on'] % max_element['name']
-
+        
+        days_title.replace(" ", "")
         string = string + '📅 **' + days_title + '** \n\n' + '```text\n' + make_commit_list(dayOfWeek) + '\n\n```\n'
 
     return string
@@ -548,10 +549,8 @@ def get_stats(github):
     if show_updated_date.lower() in truthy:
         now = datetime.datetime.utcnow()
         gmt = now - datetime.timedelta(hours=3)
-        print("Now :- ", now.strftime(updated_date_format))
-        print("Gmt :- ", gmt.strftime(updated_date_format))
-        d1 = now.strftime(updated_date_format)
-        stats = stats + "\n Última atualização em " + d1 + " UTC"
+        d1 = gmt.strftime(updated_date_format)
+        stats = stats + "\n Última atualização em " + d1 + " GMT-3"
 
     return stats
 
