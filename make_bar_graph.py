@@ -19,7 +19,7 @@ class BarGraph:
         allColorsValues = []
 
         # filter data
-        max_languages = 7
+        max_languages = 5
         top_languages = {}
         for year in self.yearly_data.keys():
             for quarter in self.yearly_data[year].keys():
