@@ -156,7 +156,7 @@ repositoryListQuery = Template("""
 
 
 def millify(n):
-    millnames = ['', ' Mil', ' Milhões', ' Bilhões', ' Trilhões']
+    millnames = ['', ' Mil', ' Milhões de', ' Bilhões de', ' Trilhões de']
     n = float(n)
     millidx = max(0, min(len(millnames) - 1,
                          int(math.floor(0
