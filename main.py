@@ -511,9 +511,11 @@ def get_stats(github):
             print("User stats are calculating. Try again later.")
         else:
             data = request.json()
-            stats += '![Code Time](http://img.shields.io/badge/' + quote(
-                str("Code Time")) + '-' + quote(str(
-                data['data']['text'])) + '-blue)\n\n'
+            stats += '[![wakatime](https://wakatime.com/badge/user/69b3793d-4002-4f84-b226-a36efe0340f7.svg)](https://wakatime.com/@69b3793d-4002-4f84-b226-a36efe0340f7)\n\n'
+
+        #stats += '![Code Time](http://img.shields.io/badge/' + quote(
+        #        str("Code Time")) + '-' + quote(str(
+        #        data['data']['text'])) + '-blue)\n\n'
 
     if show_profile_view.lower() in truthy:
         data = run_v3_api(get_profile_view.substitute(owner=username, repo=username))
@@ -553,13 +555,13 @@ def get_stats(github):
 
 
 def decode_readme(data: str):
-    '''Decode the contents of old readme'''
+    '''Decodificando o conteúdo do readme antigo'''
     decoded_bytes = base64.b64decode(data)
     return str(decoded_bytes, 'utf-8')
 
 
 def generate_new_readme(stats: str, readme: str):
-    '''Generate a new Readme.md'''
+    '''Gerando um novo README.md'''
     stats_in_readme = f"{START_COMMENT}\n{stats}\n{END_COMMENT}"
     return re.sub(listReg, stats_in_readme, readme)
 
