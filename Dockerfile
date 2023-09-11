@@ -1,18 +1,15 @@
-FROM nikolaik/python-nodejs:python3.9-nodejs16
+FROM python:3.11-alpine
 
-ADD requirements.txt /requirements.txt
-ADD main.py /main.py
-ADD loc.py /loc.py
-ADD make_bar_graph.py /make_bar_graph.py
-ADD colors.json /colors.json
-ADD translation.json /translation.json
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
-ENV PATH "$PATH:/home/root/.npm-global/bin"
+RUN mkdir -p /waka-readme-stats/assets
 
-RUN python -m pip install --upgrade pip wheel setuptools
-RUN pip install -r requirements.txt
-RUN npm -g config set user root
-RUN npm i -g npm@latest
-RUN npm i -g vega vega-lite vega-cli canvas
+ADD requirements.txt /waka-readme-stats/requirements.txt
+RUN apk add --no-cache g++ jpeg-dev zlib-dev libjpeg make git && pip3 install -r /waka-readme-stats/requirements.txt
 
-ENTRYPOINT ["python", "/main.py"]
+RUN git config --global user.name "readme-bot"
+RUN git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+ADD sources/* /waka-readme-stats/
+ENTRYPOINT cd /waka-readme-stats/ && python3 main.py
